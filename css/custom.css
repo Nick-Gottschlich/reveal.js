@@ -1,0 +1,19 @@
+#twitterNickContainer {
+  display: flex;
+  align-items: center;
+  
+  position: fixed;
+
+  color: #1DA1F2;
+  
+  bottom: 20px;
+  left: 20px;
+};
+
+.cls-1 {
+  fill: none;
+}
+
+.cls-2 {
+  fill: #1da1f2;
+}
