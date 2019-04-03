@@ -17,3 +17,7 @@
 .cls-2 {
   fill: #1da1f2;
 }
+
+.trumpTweets {
+  display: flex;
+}

@@ -28,7 +28,7 @@
 			<div class="slides">
 				<section>
 					<h1>
-						(ab)using social media APIs
+						(ab)using social media API<span style="text-transform: lowercase">s</span>
 					</h1>
 					<h3>
 						Using Python for privacy's sake
@@ -67,11 +67,44 @@
 					<h2>
 						Who am I?
 					</h2>
-					<img data-src="https://raw.githubusercontent.com/Nick-Gottschlich/Social-Amnesia/master/images/FullLogo.png">
+					<img data-src="./images/FullLogo.png">
 					<a href="http://socialamnesia.com" target="_blank">
 						socialamnesia.com
 					</a>
 				</section>
+				<section>
+					<img data-src="./images/HuffPoDoxx.png" height="400px">
+				</section>
+				<section>
+					<img data-src="./images/KevinHartTweet.png" height="250px">
+					<img data-src="./images/KHartWaPo.png" height="250px">
+				</section>
+				<section>
+					<img data-src="./images/JamesGunnVerge.png" height="500px">
+				</section>
+				<section>
+					<div class="trumpTweets">
+						<div style="padding-right: 20px">
+							<img data-src="./images/TrumpFoxNews.png" height="250px" style="padding-right">
+						</div>
+						<img data-src="./images/TrumpGolf.png" height="250px">
+					</div>
+					<img data-src="./images/Covfefe.png" height="300px">
+				</section>
+				<section>
+					<h3>import praw</h3>
+					https://github.com/praw-dev/praw
+					<pre><code class="hljs">
+reddit = praw.Reddit(
+	user_agent=USER_AGENT,
+	username=reddit_state['reddit_username'],
+	password=reddit_state['reddit_password'],
+	client_id=reddit_state['reddit_client_id'],
+	client_secret=reddit_state['reddit_client_secret']
+)
+					</code></pre>
+				</section>
+				
 			</div>
 			<div id="twitterNickContainer">
 				<svg viewBox="0 0 400 400" style="height: 55px; width:55px;">
