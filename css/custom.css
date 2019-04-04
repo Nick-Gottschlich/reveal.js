@@ -21,3 +21,7 @@
 .trumpTweets {
   display: flex;
 }
+
+.codeBlock {
+  width: 904px;
+}

@@ -1,100 +1,128 @@
 <!doctype html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<title>reveal.js</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-		<link rel="stylesheet" href="css/reset.css">
-		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/custom.css">
-		<link rel="stylesheet" href="css/theme/black.css">
+	<title>reveal.js</title>
 
-		<!-- Theme used for syntax highlighting of code -->
-		<link rel="stylesheet" href="lib/css/monokai.css">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/custom.css">
+	<link rel="stylesheet" href="css/theme/black.css">
 
-		<!-- Printing and PDF exports -->
-		<script>
-			var link = document.createElement( 'link' );
-			link.rel = 'stylesheet';
-			link.type = 'text/css';
-			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
-			document.getElementsByTagName( 'head' )[0].appendChild( link );
-		</script>
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>
-					<h1>
-						(ab)using social media API<span style="text-transform: lowercase">s</span>
-					</h1>
-					<h3>
-						Using Python for privacy's sake
-					</h3>
-					<p>
-						<small><a href="http://nickpgott.com">Nick Gottschlich</a></small>
-					</p>
-				</section>
-				<section>
-					<h2>
-						Who am I?
-					</h2>
-					<svg viewBox="0 0 55 51" width="100" version="1.1" xmlns="http://www.w3.org/2000/svg"
-						xmlns:xlink="http://www.w3.org/1999/xlink">
-						<g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-							<g id="logo">
-								<g>
-									<path
-										d="M0.228851923,7.6119403e-05 C0.102153205,7.6119403e-05 3.78205128e-05,0.104740299 3.78205128e-05,0.231859701 L3.78205128e-05,7.87234478 C3.78205128e-05,7.99870299 0.102153205,8.09994179 0.228851923,8.09994179 L3.40123654,8.09994179 L3.40123654,41.6602254 L0.228851923,41.6602254 C0.102153205,41.6602254 3.78205128e-05,41.7660313 3.78205128e-05,41.8916284 L3.78205128e-05,49.5290687 C3.78205128e-05,49.6596134 0.102153205,49.7593299 0.228851923,49.7593299 L8.05580705,49.7593299 L9.92187115,46.7408149 C12.9652878,49.2329642 16.8441596,50.7298522 21.0728712,50.7298522 C30.8362365,50.7298522 38.7475314,42.7681433 38.7475314,32.9456955 C38.7475314,23.1205836 30.8362365,15.1600164 21.0728712,15.1600164 C18.7510699,15.1600164 16.5347878,15.6159716 14.5008006,16.4380612 C14.4300763,16.4776433 14.3869609,16.5465313 14.3869609,16.6325463 L14.3869609,25.7950388 C14.3869609,25.8597403 14.4391532,25.9149269 14.5076083,25.9149269 C14.5393776,25.9149269 14.5684994,25.9000836 14.5927045,25.8810537 C16.2980314,24.2962478 18.5721788,23.3287701 21.0728712,23.3287701 C26.3518583,23.3287701 30.6312494,27.6321806 30.6312494,32.9456955 C30.6312494,38.2546433 26.3518583,42.5633821 21.0728712,42.5633821 C15.7961532,42.5633821 11.5167622,38.2546433 11.5167622,32.9456955 L11.5167622,4.08350149 C11.5167622,1.82808358 9.70175577,7.6119403e-05 7.45899936,7.6119403e-05 L0.228851923,7.6119403e-05 Z"
-										id="Fill-1" fill="#00AB8E"></path>
-									<path
-										d="M48.1031917,28.5533776 C51.7804801,28.5533776 54.7509032,25.5527507 54.7509032,21.8613403 C54.7509032,18.1649821 51.7804801,15.1601687 48.1031917,15.1601687 C44.3589609,15.1601687 41.3764353,18.1649821 41.3764353,21.8613403 C41.3764353,25.5527507 44.3589609,28.5533776 48.1031917,28.5533776"
-										id="Fill-3" fill="#003C4D"></path>
-									<path
-										d="M48.1031917,50.7296619 C51.7804801,50.7296619 54.7509032,47.7294157 54.7509032,44.035341 C54.7509032,40.3374604 51.7804801,37.3368336 48.1031917,37.3368336 C44.3589609,37.3368336 41.3764353,40.3374604 41.3764353,44.035341 C41.3764353,47.7294157 44.3589609,50.7296619 48.1031917,50.7296619"
-										id="Fill-5" fill="#003C4D"></path>
-								</g>
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/monokai.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h1>
+					(ab)using social media API<span style="text-transform: lowercase">s</span>
+				</h1>
+				<h3>
+					Using Python for privacy's sake
+				</h3>
+				<p>
+					<small><a href="http://nickpgott.com">Nick Gottschlich</a></small>
+				</p>
+			</section>
+
+			<section>
+				<h2>
+					Who am I?
+				</h2>
+				<svg viewBox="0 0 55 51" width="100" version="1.1" xmlns="http://www.w3.org/2000/svg"
+					xmlns:xlink="http://www.w3.org/1999/xlink">
+					<g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+						<g id="logo">
+							<g>
+								<path
+									d="M0.228851923,7.6119403e-05 C0.102153205,7.6119403e-05 3.78205128e-05,0.104740299 3.78205128e-05,0.231859701 L3.78205128e-05,7.87234478 C3.78205128e-05,7.99870299 0.102153205,8.09994179 0.228851923,8.09994179 L3.40123654,8.09994179 L3.40123654,41.6602254 L0.228851923,41.6602254 C0.102153205,41.6602254 3.78205128e-05,41.7660313 3.78205128e-05,41.8916284 L3.78205128e-05,49.5290687 C3.78205128e-05,49.6596134 0.102153205,49.7593299 0.228851923,49.7593299 L8.05580705,49.7593299 L9.92187115,46.7408149 C12.9652878,49.2329642 16.8441596,50.7298522 21.0728712,50.7298522 C30.8362365,50.7298522 38.7475314,42.7681433 38.7475314,32.9456955 C38.7475314,23.1205836 30.8362365,15.1600164 21.0728712,15.1600164 C18.7510699,15.1600164 16.5347878,15.6159716 14.5008006,16.4380612 C14.4300763,16.4776433 14.3869609,16.5465313 14.3869609,16.6325463 L14.3869609,25.7950388 C14.3869609,25.8597403 14.4391532,25.9149269 14.5076083,25.9149269 C14.5393776,25.9149269 14.5684994,25.9000836 14.5927045,25.8810537 C16.2980314,24.2962478 18.5721788,23.3287701 21.0728712,23.3287701 C26.3518583,23.3287701 30.6312494,27.6321806 30.6312494,32.9456955 C30.6312494,38.2546433 26.3518583,42.5633821 21.0728712,42.5633821 C15.7961532,42.5633821 11.5167622,38.2546433 11.5167622,32.9456955 L11.5167622,4.08350149 C11.5167622,1.82808358 9.70175577,7.6119403e-05 7.45899936,7.6119403e-05 L0.228851923,7.6119403e-05 Z"
+									id="Fill-1" fill="#00AB8E"></path>
+								<path
+									d="M48.1031917,28.5533776 C51.7804801,28.5533776 54.7509032,25.5527507 54.7509032,21.8613403 C54.7509032,18.1649821 51.7804801,15.1601687 48.1031917,15.1601687 C44.3589609,15.1601687 41.3764353,18.1649821 41.3764353,21.8613403 C41.3764353,25.5527507 44.3589609,28.5533776 48.1031917,28.5533776"
+									id="Fill-3" fill="#003C4D"></path>
+								<path
+									d="M48.1031917,50.7296619 C51.7804801,50.7296619 54.7509032,47.7294157 54.7509032,44.035341 C54.7509032,40.3374604 51.7804801,37.3368336 48.1031917,37.3368336 C44.3589609,37.3368336 41.3764353,40.3374604 41.3764353,44.035341 C41.3764353,47.7294157 44.3589609,50.7296619 48.1031917,50.7296619"
+									id="Fill-5" fill="#003C4D"></path>
 							</g>
 						</g>
-					</svg>
-					<p>
-						Software Engineer at BazaarVoice
-					</p>
-				</section>
-				<section>
-					<h2>
-						Who am I?
-					</h2>
-					<img data-src="./images/FullLogo.png">
-					<a href="http://socialamnesia.com" target="_blank">
-						socialamnesia.com
-					</a>
-				</section>
-				<section>
-					<img data-src="./images/HuffPoDoxx.png" height="400px">
-				</section>
-				<section>
-					<img data-src="./images/KevinHartTweet.png" height="250px">
-					<img data-src="./images/KHartWaPo.png" height="250px">
-				</section>
-				<section>
-					<img data-src="./images/JamesGunnVerge.png" height="500px">
-				</section>
-				<section>
-					<div class="trumpTweets">
-						<div style="padding-right: 20px">
-							<img data-src="./images/TrumpFoxNews.png" height="250px" style="padding-right">
-						</div>
-						<img data-src="./images/TrumpGolf.png" height="250px">
+					</g>
+				</svg>
+				<p>
+					Software Engineer at BazaarVoice
+				</p>
+			</section>
+
+			<section>
+				<h2>
+					Who am I?
+				</h2>
+				<img data-src="./images/FullLogo.png">
+				<a href="http://socialamnesia.com" target="_blank">
+					socialamnesia.com
+				</a>
+			</section>
+
+			<section>
+				<img data-src="./images/HuffPoDoxx.png" height="400px">
+			</section>
+
+			<section>
+				<img data-src="./images/KevinHartTweet.png" height="250px">
+				<img data-src="./images/KHartWaPo.png" height="250px">
+			</section>
+
+			<section>
+				<img data-src="./images/JamesGunnVerge.png" height="500px">
+			</section>
+
+			<section>
+				<div class="trumpTweets">
+					<div style="padding-right: 20px">
+						<img data-src="./images/TrumpFoxNews.png" height="250px" style="padding-right">
 					</div>
-					<img data-src="./images/Covfefe.png" height="300px">
-				</section>
-				<section>
-					<h3>import praw</h3>
-					https://github.com/praw-dev/praw
-					<pre><code class="hljs">
+					<img data-src="./images/TrumpGolf.png" height="250px">
+				</div>
+				<img data-src="./images/Covfefe.png" height="300px">
+			</section>
+
+			<section>
+				<h3>Maintain a state with shelve</h3>
+				<pre><code class="hljs python">
+import shelve
+import os
+from pathlib import Path
+
+config_path = Path(f'{os.path.expanduser("~")}/.config')
+state_file_path = Path(
+	f'{os.path.expanduser("~")}/.config/state.db')
+state = shelve.open(str(state_file_path))
+
+state['username'] = getUsername()
+state['whitelisted_comments'] = getWhitelistedComments()
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Use PRAW to set up your reddit instance</h3>
+				<a href="https://github.com/praw-dev/praw">github.com/praw-dev/praw</a>
+				<pre><code class="hljs python">
+import praw
+
 reddit = praw.Reddit(
 	user_agent=USER_AGENT,
 	username=reddit_state['reddit_username'],
@@ -102,35 +130,142 @@ reddit = praw.Reddit(
 	client_id=reddit_state['reddit_client_id'],
 	client_secret=reddit_state['reddit_client_secret']
 )
+
+reddit_state['user'] = reddit.redditor(reddit_username)
 					</code></pre>
-				</section>
-				
-			</div>
-			<div id="twitterNickContainer">
-				<svg viewBox="0 0 400 400" style="height: 55px; width:55px;">
-					<title>Twitter_Logo_Blue</title>
-					<rect class="cls-1" width="10" height="10" />
-					<path class="cls-2"
-						d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" />
-				</svg>
-				@NickGottschlich
-			</div>
+			</section>
+
+			<section>
+				<h3>Use Praw to get reddit comments</h3>
+				<pre><code class="hljs python codeBlock">
+# find out how many comments you're dealing with
+total_items = sum(
+	1 for _ in reddit_state['user'].comments.new(limit=None))
+# get a list of those comments
+item_array = reddit_state['user'].comments.new(limit=None)
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Edit and delete comments after comparing to shelved values</h3>
+				<pre><code class="hljs python">
+item_array = reddit_state['user'].comments.new(limit=None)
+for item in item_array:
+	if item.score > reddit_state['max_score']:
+		pass
+	else:
+		item.edit('overwriting text')
+		item.delete()
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Use tweepy to get twitter items</h3>
+				<a href="https://github.com/tweepy/tweepy">github.com/tweepy/tweepy</a>
+				<pre><code class="hljs python">
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+
+twitter_api = tweepy.API(auth)
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Use tweepy to gather tweets</h3>
+				<pre><code class="hljs python">
+user_tweets = []
+new_tweets = twitter_api.user_timeline(count=200)
+user_tweets.extend(new_items)
+oldest = user_tweets[-1].id - 1
+
+while len(new_tweets) > 0:
+	new_tweets = twitter_api.user_timeline(count=200, max_id=oldest)
+	user_tweets.extend(new_tweets)
+	oldest = user_tweets[-1].id - 1
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Rinse and repeat to remove tweets</h3>
+				<pre><code class="hljs python">
+for tweets in user_tweets:
+	if tweet.favorite_count >= twitter_state['max_favorites']:
+		pass
+	else:
+		twitter_api.destroy_status(tweet.id)
+				</code></pre>
+			</section>
+
+			<section>
+				<iframe width="900" height="600" src="https://www.youtube.com/embed/hkDD03yeLnU" frameborder="0"
+					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</section>
+
+			<section>
+				<h3>Create a GUI interface using Tkinter</h3>
+				<div style="display: flex; align-items: center;">
+					<pre style="padding-right: 10px;"><code class="hljs python">
+	import Tkinter
+	root = Tkinter.Tk()
+	frame = Tkinter.Frame(root)
+	frame.grid()
+	
+	label1 = Tkinter.Label(root, text='first spot')
+	label2 = Tkinter.Label(root, text='second spot')
+	label3 = Tkinter.Label(root, text='third spot')
+	label1.grid(row=0, column=0)
+	label2.grid(row=0, column=1)
+	label3.grid(row=1, column=0)
+
+	root.mainloop()
+					</code></pre>
+					<img data-src="./images/TkinterGrid.png" height="100px">
+				</div>
+			</section>
+
+			<section>
+				<h3>Use lambda functions to wire up buttons</h3>
+				<pre><code class="hljs python">
+set_max_score_button = tk.Button(
+	configuration_frame, text='Set Max Score',
+	command=lambda: reddit.set_max_score(
+		max_score_entry_field.get())
+)
+
+# in reddit.py
+def set_max_score(max_score, current_max_score):
+	reddit_state['max_score'] = set_max_score(
+		max_score, current_max_score)
+	reddit_state.sync
+				</code></pre>
+			</section>
 		</div>
+		<div id="twitterNickContainer">
+			<svg viewBox="0 0 400 400" style="height: 55px; width:55px;">
+				<title>Twitter_Logo_Blue</title>
+				<rect class="cls-1" width="10" height="10" />
+				<path class="cls-2"
+					d="M153.62,301.59c94.34,0,145.94-78.16,145.94-145.94,0-2.22,0-4.43-.15-6.63A104.36,104.36,0,0,0,325,122.47a102.38,102.38,0,0,1-29.46,8.07,51.47,51.47,0,0,0,22.55-28.37,102.79,102.79,0,0,1-32.57,12.45,51.34,51.34,0,0,0-87.41,46.78A145.62,145.62,0,0,1,92.4,107.81a51.33,51.33,0,0,0,15.88,68.47A50.91,50.91,0,0,1,85,169.86c0,.21,0,.43,0,.65a51.31,51.31,0,0,0,41.15,50.28,51.21,51.21,0,0,1-23.16.88,51.35,51.35,0,0,0,47.92,35.62,102.92,102.92,0,0,1-63.7,22A104.41,104.41,0,0,1,75,278.55a145.21,145.21,0,0,0,78.62,23" />
+			</svg>
+			@NickGottschlich
+		</div>
+	</div>
 
-		<script src="js/reveal.js"></script>
+	<script src="js/reveal.js"></script>
 
-		<script>
-			// More info about config & dependencies:
-			// - https://github.com/hakimel/reveal.js#configuration
-			// - https://github.com/hakimel/reveal.js#dependencies
-			Reveal.initialize({
-				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
-					{ src: 'plugin/notes/notes.js', async: true },
-					{ src: 'plugin/highlight/highlight.js', async: true }
-				]
-			});
-		</script>
-	</body>
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true }
+			]
+		});
+	</script>
+</body>
+
 </html>
