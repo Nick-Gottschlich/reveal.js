@@ -163,8 +163,14 @@ for item in item_array:
 				<h3>Use tweepy to get twitter items</h3>
 				<a href="https://github.com/tweepy/tweepy">github.com/tweepy/tweepy</a>
 				<pre><code class="hljs python">
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(access_token, access_token_secret)
+auth = tweepy.OAuthHandler(
+	twitter_state['consumer_key'], 
+	twitter_state['consumer_secret']
+)
+auth.set_access_token(
+	twitter_state['access_token'], 
+	twitter_state['access_token_secret'
+)
 
 twitter_api = tweepy.API(auth)
 				</code></pre>
@@ -187,7 +193,7 @@ while len(new_tweets) > 0:
 
 			<section>
 				<h3>Rinse and repeat to remove tweets</h3>
-				<pre><code class="hljs python">
+				<pre><code class="hljs python" style="width: 915px;">
 for tweets in user_tweets:
 	if tweet.favorite_count >= twitter_state['max_favorites']:
 		pass
@@ -238,6 +244,11 @@ def set_max_score(max_score, current_max_score):
 		max_score, current_max_score)
 	reddit_state.sync
 				</code></pre>
+			</section>
+
+			<section>
+				<h3>Now let's talk marketing</h3>
+				
 			</section>
 		</div>
 		<div id="twitterNickContainer">
