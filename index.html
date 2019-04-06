@@ -114,6 +114,7 @@ state = shelve.open(str(state_file_path))
 
 state['username'] = getUsername()
 state['whitelisted_comments'] = getWhitelistedComments()
+state.sync
 				</code></pre>
 			</section>
 
@@ -137,7 +138,7 @@ reddit_state['user'] = reddit.redditor(reddit_username)
 
 			<section>
 				<h3>Use Praw to get reddit comments</h3>
-				<pre><code class="hljs python codeBlock">
+				<pre><code class="hljs python codeBlock" style="width: 950px;">
 # find out how many comments you're dealing with
 total_items = sum(
 	1 for _ in reddit_state['user'].comments.new(limit=None))
@@ -185,7 +186,8 @@ user_tweets.extend(new_items)
 oldest = user_tweets[-1].id - 1
 
 while len(new_tweets) > 0:
-	new_tweets = twitter_api.user_timeline(count=200, max_id=oldest)
+	new_tweets = twitter_api.user_timeline(
+		count=200, max_id=oldest)
 	user_tweets.extend(new_tweets)
 	oldest = user_tweets[-1].id - 1
 				</code></pre>
@@ -239,16 +241,53 @@ set_max_score_button = tk.Button(
 )
 
 # in reddit.py
-def set_max_score(max_score, current_max_score):
-	reddit_state['max_score'] = set_max_score(
-		max_score, current_max_score)
+def set_max_score(max_score):
+	reddit_state['max_score'] = set_max_score(max_score)
 	reddit_state.sync
 				</code></pre>
 			</section>
 
 			<section>
 				<h3>Now let's talk marketing</h3>
-				
+				<h4>Why bother marketing a side project?</h4>
+				<ul>
+					<li>User feedback</li>
+					<li>Iterative development</li>
+					<li>Find contributors</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Where to market?</h3>
+				<h4>Find your user</h4>
+				<ul>
+					<li>reddit?</li>
+					<li>hackernews?</li>
+					<li>twitter?</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>reddit</h3>
+				<img data-src="./images/RedditPrivacy.png" height="550px" />
+			</section>
+
+			<section>
+				<h3>hackernews</h3>
+				<img data-src="./images/GitHubInsights.png" height="550px" />
+			</section>
+
+			<section>
+				<h3>Twitter</h3>
+				<div>
+					<a href="https://ifttt.com">If This Then That (IFTTT)</a>
+				</div>
+				<img data-src="./images/TwitterNotify.png" height="500px" />
+			</section>
+
+			<section>
+				<h3>Thank you!</h3>
+				<span>Q & A time</span>
 			</section>
 		</div>
 		<div id="twitterNickContainer">
