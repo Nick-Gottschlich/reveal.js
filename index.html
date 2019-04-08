@@ -162,7 +162,7 @@ for item in item_array:
 
 			<section>
 				<h3>Use tweepy to get twitter items</h3>
-				<a href="https://github.com/tweepy/tweepy">github.com/tweepy/tweepy</a>
+				<a href="https://github.com/tweepy/tweepy" target="_blank">github.com/tweepy/tweepy</a>
 				<pre><code class="hljs python">
 auth = tweepy.OAuthHandler(
 	twitter_state['consumer_key'], 
@@ -170,7 +170,7 @@ auth = tweepy.OAuthHandler(
 )
 auth.set_access_token(
 	twitter_state['access_token'], 
-	twitter_state['access_token_secret'
+	twitter_state['access_token_secret']
 )
 
 twitter_api = tweepy.API(auth)
@@ -201,6 +201,33 @@ for tweets in user_tweets:
 		pass
 	else:
 		twitter_api.destroy_status(tweet.id)
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>API Limitations</h3>
+				<div>Reddit: 1000 items</div>
+				<div>Twitter: 3200 items</div>
+			</section>
+
+			<section>
+				<h3>Scheduling</h3>
+				<pre><code class="hljs python" style="width: 915px;">
+def set_scheduler(root, hour_of_day):
+	reddit_state['scheduled_time'] = hour_of_day
+	reddit_state.sync
+
+	current_time = datetime.now().time().hour
+	if current_time == hour_of_day and not alreadyRanBool:
+		delete_reddit_items()
+		alreadyRanBool = True
+	
+	if current_time < 23 and current_time==hour_of_day + 1:
+		alreadyRanBool=False 
+	elif current_time==0: 
+		alreadyRanBool=False
+	root.after(1000, lambda: set_scheduler(root, hour_of_day))
+
 				</code></pre>
 			</section>
 
