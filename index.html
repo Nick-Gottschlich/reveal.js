@@ -120,7 +120,7 @@ state.sync
 
 			<section>
 				<h3>Use PRAW to set up your reddit instance</h3>
-				<a href="https://github.com/praw-dev/praw">github.com/praw-dev/praw</a>
+				<a href="https://github.com/praw-dev/praw" target="_blank">github.com/praw-dev/praw</a>
 				<pre><code class="hljs python">
 import praw
 
@@ -211,27 +211,6 @@ for tweets in user_tweets:
 			</section>
 
 			<section>
-				<h3>Scheduling</h3>
-				<pre><code class="hljs python" style="width: 915px;">
-def set_scheduler(root, hour_of_day):
-	reddit_state['scheduled_time'] = hour_of_day
-	reddit_state.sync
-
-	current_time = datetime.now().time().hour
-	if current_time == hour_of_day and not alreadyRanBool:
-		delete_reddit_items()
-		alreadyRanBool = True
-	
-	if current_time < 23 and current_time==hour_of_day + 1:
-		alreadyRanBool=False 
-	elif current_time==0: 
-		alreadyRanBool=False
-	root.after(1000, lambda: set_scheduler(root, hour_of_day))
-
-				</code></pre>
-			</section>
-
-			<section>
 				<iframe width="900" height="600" src="https://www.youtube.com/embed/hkDD03yeLnU" frameborder="0"
 					allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 			</section>
@@ -269,8 +248,29 @@ set_max_score_button = tk.Button(
 
 # in reddit.py
 def set_max_score(max_score):
-	reddit_state['max_score'] = set_max_score(max_score)
+	reddit_state['max_score'] = max_score
 	reddit_state.sync
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Scheduling</h3>
+				<pre><code class="hljs python" style="width: 915px;">
+def set_scheduler(root, hour_of_day):
+	reddit_state['scheduled_time'] = hour_of_day
+	reddit_state.sync
+
+	current_time = datetime.now().time().hour
+	if current_time == hour_of_day and not alreadyRanBool:
+		delete_reddit_items()
+		alreadyRanBool = True
+	
+	if current_time < 23 and current_time==hour_of_day + 1:
+		alreadyRanBool=False 
+	elif current_time==0: 
+		alreadyRanBool=False
+	root.after(60000, lambda: set_scheduler(root, hour_of_day))
+			
 				</code></pre>
 			</section>
 
