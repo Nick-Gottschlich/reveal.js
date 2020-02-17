@@ -211,6 +211,72 @@ expect(mockFn).toHaveBeenCalled();
 			</section>
 
 			<section>
+				<h3>Mocking APIs</h3>
+				<pre><code class="javascript">
+import mockAxios from "axios";
+jest.mock('axios');
+mockAxios.get.mockImplementationOnce(() =>
+ Promise.resolve(
+  { data: { title: "Fake Title" } }
+ )
+);
+expect(mockAxios.get).toHaveBeenCalledWith(URL);
+				</code></pre>
+				<span>
+					Remember, unit tests test a single unit of your codebase! Don't rely on external dynamic sources like APIs, mock them out!
+				</span>
+			</section>
+
+			<section>
+				<h3>Taking snapshots</h3>
+				<img data-src="./images/snapshot.gif" height="400px">
+			</section>
+
+			<section>
+				<h3>Snapshots can be shallow or full</h3>
+				<pre><code class="javascript">
+// full
+import renderer from 'react-test-renderer';
+const tree = renderer.create(< App/>).toJSON();
+expect(tree).toMatchSnapshot();
+
+// shallow
+const renderer = new ShallowRenderer()
+const result = renderer.render(< App />)
+expect(result).toMatchSnapshot()
+				</code></pre>
+			</section>
+
+			<section>
+				<h4 style="color: red;">🚨 Snapshots are not a subsitute! 🚨</h4>
+				<span>You can use snapshots to supplement good ol' fashioned unit tests! But:</span>
+				<ul>
+					<li>
+						They don't enforce clear requirements
+					</li>
+					<li>
+						They can be easily updated without thinking.
+					</li>
+					<li>
+						If they are long, they are liable to be skipped over in code review.
+					</li>
+					<li>
+						Often it's only the original author who understands them.
+					</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Thank you!</h3>
+				<span>
+					I hope you have a groundwork to start writing your own unit tests now.
+				</span>
+				<span>
+					Q&A?
+				</span>
+			</section>
+
+			<section>
 				<h4>References</h4>
 				<ul>
 					<li>
