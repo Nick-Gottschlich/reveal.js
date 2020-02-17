@@ -104,9 +104,9 @@
 
 			<section>
 				<h3>Parts of a unit test: the matcher</h3>
-				<span style="color: cyan">
-					`expect(currentYear).toBe(2020);`
-				</span>
+				<pre><code class="javascript">
+expect(currentYear).toBe(2020);
+				</code></pre>
 				</br>
 				<span>
 					The unit test expects that the current year value is 2020.
@@ -123,8 +123,9 @@
 
 			<section>
 				<h3>Parts of a unit test: the renderer</h3>
-				<span style="color: cyan">
-					`wrapper = shallow(<App />);`
+				<pre><code class="javascript">
+wrapper = shallow(< App />);
+				</code></pre>
 				</span>
 				</br>
 				<span>
@@ -141,9 +142,9 @@
 
 			<section>
 				<h3>Parts of a unit test: The selector</h3>
-				<span style="color: cyan">
-					`const button = wrapper.find("Button");`
-				</span>
+				<pre><code class="javascript">
+const button = wrapper.find("Button");
+				</code></pre>
 				<br/>
 				<span>
 					Use enzyme to simulate human testing behavior.
@@ -152,14 +153,61 @@
 
 			<section>
 				<h3>It is recommended to import actual components, not use string selectors</h3>
-				<span style="color: cyan">
-					`import Menu from "./Components/Menu";`
-					`const menu = wrapper.find(Menu.Item);`
-				</span>
-				<br/>
+				<pre><code class="javascript">
+import Menu from "./Components/Menu";
+const menu = wrapper.find(Menu.Item);
+				</code></pre>
 				<span>
-					Use enzyme to simulate human testing behavior.
+					This allows you to use dot notation, and ensure you always test for the component you mean to test for.
 				</span>
+			</section>
+
+			<section>
+				<h3>Simulate clicks</h3>
+				<span>
+					You can use unit testing to simulate Javascript event handlers, like onclick, onchange, etc.
+				</span>
+			</section>
+
+			<section>
+				<h3>Clickity Clack, your unit tests are on track!</h3>
+				<pre><code class="javascript">
+wrapper.simulate("click");
+wrapper.find('Input').simulate(
+ 'change', 
+ { 
+  target: { value: 'this is our changed text' } 
+ }
+);
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Prepare to be mocked</h3>
+				<img data-src="./images/haha.jpeg" height="400px">
+			</section>
+
+			<section>
+				<h3>Passing in props? Mock em!</h3>
+				<pre><code class="javascript">
+const mockOptions = [...] // Or {...}
+const mockTitle = "Mock Title";
+const mockFn = jest.fn();
+const props = {
+	title: mockTitle,
+	options: mockOptions,
+	handleClick: mockFn,
+}
+...
+wrapper = shallow(< TextBox {...props} />);
+wrapper.simulate("click");
+expect(mockFn).toHaveBeenCalled();
+				</code></pre>
+			</section>
+
+			<section>
+				<h3>Mocking the internet (aka APIs)</h3>
+				<img data-src="./images/internetvaporwave.gif" height="400px">
 			</section>
 
 			<section>
